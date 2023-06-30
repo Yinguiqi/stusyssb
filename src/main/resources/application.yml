@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.mht.stueaxm.domain
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
