@@ -24,6 +24,9 @@
 如果用idea的话就是把这个拉取到本地，idea打开，然后在配置信息那里设置数据库地址就行。
 如果要上传到虚拟机里，可以看看这个大佬写的教程https://github.com/cativen/fishexam
 
+## 许可证
+该项目使用 GPL（GNU General Public License） 许可证。
+
 ## 联系方式
 bilibili：烤棉花糖总是好的
 邮箱：yinhe2360@163.com
