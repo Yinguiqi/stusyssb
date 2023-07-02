@@ -20,7 +20,7 @@
     <style type="text/css">
         body{
             /*background-image: url("../img/examT.jpg");*/
-            background-image: url("../../css/img/lx.jpg");
+            background-image: url("../../css/img/qg.jpg");
             width: 100%;
             height: 100%;
             background-repeat:no-repeat;
