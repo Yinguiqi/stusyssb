@@ -20,7 +20,7 @@ public class MyConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(myInterceptor())
                 .addPathPatterns("/**")                         // 拦截全部路径
-                .excludePathPatterns("/LoginController");    // 放行部分路径
+                .excludePathPatterns("/");    // 放行部分路径
 
     }
 }

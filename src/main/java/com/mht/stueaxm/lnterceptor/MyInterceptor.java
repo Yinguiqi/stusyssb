@@ -25,7 +25,7 @@ public class MyInterceptor implements HandlerInterceptor {
         if(ua!=null && referer!=null) return true;                             // 返回 TRUE 进入业务层执行方法后返回
         else {
             // 返回参数加入返回体
-            response.sendRedirect("/LoginController/");
+            response.sendRedirect("/");
             return false;                                                      // 返回 FALSE 不执行业务直接携带返回体返回
         }
    }

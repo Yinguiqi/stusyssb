@@ -28,7 +28,7 @@
             }
             function query(id) {
                 $.ajax({
-                    url : "${pageContext.request.contextPath}/LoginController/editStudent1",
+                    url : "${pageContext.request.contextPath}/editStudent1",
                     async : true,
                     type : "POST",
                     data : {
@@ -263,7 +263,7 @@
                             <strong class="card-title">学生列表</strong>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="${pageContext.request.contextPath}/LoginController/retrieveStudent" role="form">
+                            <form method="post" action="${pageContext.request.contextPath}/retrieveStudent" role="form">
                                 <table class="retrieveTable">
                                     <tr>
                                         <td>学号：</td>
@@ -308,7 +308,7 @@
                                             <%--修改学生信息--%>
                                         <td><a class="queryA" href="javascript:void(0)" onclick="query(${s.id})" ><span class="glyphicon glyphicon-edit"></span> </a></td>
                                             <%--删除学生信息--%>
-                                        <td><a href="${pageContext.request.contextPath}/LoginController/deleteStudent?id=${s.id}"><span class="glyphicon glyphicon-trash"></span> </a></td>
+                                        <td><a href="${pageContext.request.contextPath}/deleteStudent?id=${s.id}"><span class="glyphicon glyphicon-trash"></span> </a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -389,7 +389,7 @@
                             aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel">修改学生信息</h4>
                 </div>
-                <form action="${pageContext.request.contextPath}/LoginController/updateStudent" method="post">
+                <form action="${pageContext.request.contextPath}/updateStudent" method="post">
                     <div class="modal-body">
                         <div class="input-group">
                             <span >学号</span>
@@ -440,7 +440,7 @@
                             aria-hidden="true">&times;</button>
                     <h4 class="modal-title" id="myModalLabel1">修改学生信息</h4>
                 </div>
-                <form action="${pageContext.request.contextPath}/LoginController/addStudent" method="post">
+                <form action="${pageContext.request.contextPath}/addStudent" method="post">
                     <div class="modal-body">
                         <div class="input-group">
                             <span >学号</span>

@@ -45,7 +45,7 @@
                     //通过阿贾克斯发送数据，并且接收回应信息
                     $.ajax({
                         type:"POST",
-                        url:"${pageContext.request.contextPath}/LoginController/StudentLogin",//方法的类型
+                        url:"${pageContext.request.contextPath}/StudentLogin",//方法的类型
                         //data:"userName="+$("#id1").val()+"&password="+$("#id2").val(),
                         data:{"userName":$("#id1").val(),"passWord":$("#id2").val(),"checkcode":$("#checkcode").val()},
                         /*datatype:"application/json",*/
@@ -53,7 +53,7 @@
                             //对发送过来的json字符串进行解析
                             //data=$.parseJSON(data);
                             if (data=="ok"){
-                                top.location.href="${pageContext.request.contextPath}/LoginController/listStudent1";
+                                top.location.href="${pageContext.request.contextPath}/listStudent1";
                             }else if(data=="no"){
                                 $("#hint").text("您输入的账号或密码错误");
                             }else {
@@ -66,7 +66,7 @@
             });
             //点击刷新图片
             $("#codeimg").click(function () {
-                $("#codeimg").prop("src",$("#contentpath").val()+"/LoginController/CheckCodeServlet1?now="+(new Date().getTime()));
+                $("#codeimg").prop("src",$("#contentpath").val()+"/CheckCodeServlet1?now="+(new Date().getTime()));
 
             });
         });
@@ -101,7 +101,7 @@
                             <input id="checkcode" type="text" placeholder="点击刷新验证码" required="required" name="c"/>
                         </div>
                         <div class="col-sm-6">
-                            <img id="codeimg" src="${pageContext.servletContext.contextPath}/LoginController/CheckCodeServlet1?now=${requestScope.get("time")}" title="看不清点击刷新" width="120px" height="45px">
+                            <img id="codeimg" src="${pageContext.servletContext.contextPath}/CheckCodeServlet1?now=${requestScope.get("time")}" title="看不清点击刷新" width="120px" height="45px">
                         </div>
                     </div>
                     <div class="row">

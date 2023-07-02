@@ -34,7 +34,7 @@ import java.util.Random;
  */
 @Controller
 @SessionAttributes("user")
-@RequestMapping(value = "/LoginController",produces = "text/html;charset=utf-8")
+
 public class LoginController {
     //LoginServiceImpl loginService = new LoginServiceImpl();
     @Autowired
