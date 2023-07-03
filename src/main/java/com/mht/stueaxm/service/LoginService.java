@@ -13,14 +13,14 @@ public interface LoginService {
 
     //getUserByNameAndPass
     User login(String username, String password);
-    int getTotal();
-    void   addStudent(Student student);
 
-    List<Student>   retrieveStudent(Student student);
-    void   deleteStudent(int id);
-    void   updateStudent(Student student);
-    Student getStudent(int id);
-    List<Student> list(int start, int count);
+
+
+
+
+
+
+
 
 
 }

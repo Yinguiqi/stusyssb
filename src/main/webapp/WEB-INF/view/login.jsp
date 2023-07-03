@@ -53,7 +53,7 @@
                             //对发送过来的json字符串进行解析
                             //data=$.parseJSON(data);
                             if (data=="ok"){
-                                top.location.href="/listStudent1";
+                                top.location.href="/listStudent";
                             }else if(data=="no"){
                                 $("#hint").text("您输入的账号或密码错误");
                             }else {
