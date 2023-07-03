@@ -82,7 +82,7 @@ public class LoginController {
     //绘制验证码
     private static final String result="ABCDEFGHIGKLMNOPQRSTUVWXYZabcdefghigklmnopqrstuvwxyz0123456789";
     @ResponseBody()
-    @RequestMapping("CheckCodeServlet1")
+    @RequestMapping("CheckCodeServlet")
     private String drawImg(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
         //宽
         int width=139;
