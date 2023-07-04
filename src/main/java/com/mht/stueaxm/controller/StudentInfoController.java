@@ -3,7 +3,6 @@ package com.mht.stueaxm.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.mht.stueaxm.domain.Page;
 import com.mht.stueaxm.domain.Student;
-import com.mht.stueaxm.service.LoginService;
 import com.mht.stueaxm.service.StudentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -136,23 +135,6 @@ public class StudentInfoController {
 
         return "listStudent";
     }
-    /**
-     * 用于修改学生信息界面的信息回显
-     * @param id
-     * @return
-     */
-    @RequestMapping("/editStudent")
-    public ModelAndView editStudent(int id){
-        // 创建一个模型视图对象
-        ModelAndView mv = new ModelAndView();
-        // 查询学生信息
-        Student student = studentInfo.getStudent(id);
-        // 将数据放置到 ModelAndView 对象视图中
-        mv.addObject("student",student);
-        // 放入 jsp 界面
-        mv.setViewName("editStudent");
-        return mv;
-    }
 
     @RequestMapping("/retrieveStudent")
     public String retrieveStudent(HttpServletRequest request, HttpServletResponse response){
@@ -211,15 +193,5 @@ public class StudentInfoController {
         request.setAttribute("page", page);
         return "listStudent";
     }
-    @RequestMapping("/editStudent1")
-    protected void editStudent1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-        Integer id = Integer.parseInt(request.getParameter("id"));
-        Student student = studentInfo.getStudent(id);
-        JSONObject object = new JSONObject();
-        String object1 = object.toJSONString(student);
-        System.out.println(object1);
-        response.getWriter().write(object1);
-    }
+
 }

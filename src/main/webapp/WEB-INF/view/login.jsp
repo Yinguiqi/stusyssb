@@ -6,20 +6,18 @@
     <meta charset="UTF-8">
     <title>学生管理系统</title>
     <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css"/>
+    <!--导入layui包-->
+    <link rel="stylesheet" href="../../css/layui/layui/css/layui.css"/>
+    <!--引入css文件-->
+    <link rel="stylesheet" href="../../css/css/LoginCss.css" />
     <!--导入jquery包-->
     <script src="../../css/jQuery/jquery-1.11.2.js"></script>
     <%--导入layer包--%>
     <script src="../../css/layer/layer/layer.js"></script>
-    <!--导入layui包-->
-    <link rel="stylesheet" href="../../css/layui/layui/css/layui.css"/>
     <script src="../../css/layui/layui/layui.js"></script>
-    <!--引入css文件-->
-
-    <link rel="stylesheet" href="../../css/css/LoginCss.css" />
     <!--不能引入的样式-->
-    <style type="text/css">
+    <style>
         body{
-            /*background-image: url("../img/examT.jpg");*/
             background-image: url("../../css/img/qg.jpg");
             width: 100%;
             height: 100%;
@@ -74,46 +72,47 @@
 </head>
 <body>
 
-<div class="container-fluid">
-    <div  class="row">
-        <div id="login" class="col-sm-12">
-            <%--        <h1>登录</h1>--%>
-            <form action="#" method="post" class="site-doc-icon site-doc-anim" id="loginForm">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <input type="text" id="id1" required="required" value="" placeholder="用户名" name="u"/>
+    <div class="container-fluid">
+        <div  class="row">
+            <div id="login" class="col-sm-12">
+                <%--        <h1>登录</h1>--%>
+                <form action="#" method="post" class="site-doc-icon site-doc-anim" id="loginForm">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" id="id1" required="required" value="" placeholder="用户名" name="u"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="password" id="id2" required="required" value="" placeholder="密码" name="p"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input id="checkcode" type="text" placeholder="点击刷新验证码" required="required" name="c"/>
+                            </div>
+                            <div class="col-sm-6">
+                                <img id="codeimg" src="/CheckCodeServlet?now=${requestScope.get("time")}" title="看不清点击刷新" width="120px" height="45px">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="width: 200px;height: 20px;position: relative;bottom: 20px;color: red;" id="hint"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <input type="password" id="id2" required="required" value="" placeholder="密码" name="p"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <input id="checkcode" type="text" placeholder="点击刷新验证码" required="required" name="c"/>
-                        </div>
-                        <div class="col-sm-6">
-                            <img id="codeimg" src="/CheckCodeServlet?now=${requestScope.get("time")}" title="看不清点击刷新" width="120px" height="45px">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div style="width: 200px;height: 20px;position: relative;bottom: 20px;color: red;" id="hint"></div>
-                        </div>
-                    </div>
-                </div>
 
-                <input class="layui-anim" style="position: relative;bottom: 20px;"  data-anim="layui-anim-scaleSpring"  type="button" value="登录" id="buts" />
-            </form>
+                    <input class="layui-anim" style="position: relative;bottom: 20px;"  data-anim="layui-anim-scaleSpring"  type="button" value="登录" id="buts" />
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div id="footer" class="col-sm-12">
+                问题不大
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div id="footer" class="col-sm-12">
-            问题不大
-        </div>
-    </div>
-</div>
+
 </body>
 </html>

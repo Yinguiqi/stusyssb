@@ -314,7 +314,7 @@
                                 </tbody>
                             </table>
 
-                            <nav class="pageDIV" style="text-align: center;">
+                            <nav class="pageDIV" style="text-align:center;">
                                 <ul class="pagination" >
                                     <li <c:if test="${!page.hasPreviouse}">class="disabled"</c:if>>
                                         <a href="?page.start=0">
@@ -332,8 +332,7 @@
 
                                         <c:if test="${status.count*page.count-page.start<=30 && status.count*page.count-page.start>=-10}">
                                             <li <c:if test="${status.index*page.count==page.start}">class="disabled"</c:if>>
-                                                <a
-                                                        href="?page.start=${status.index*page.count}"
+                                                <a href="?page.start=${status.index*page.count}"
                                                         <c:if test="${status.index*page.count==page.start}">class="current"</c:if>
                                                 >${status.count}</a>
                                             </li>
