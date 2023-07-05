@@ -34,10 +34,20 @@ public class StudentInfoController {
     @RequestMapping("/addStudent")
     public String addStudent(HttpServletRequest request, HttpServletResponse response){
         Student student = new Student();
-
-        // 获取前端传值
-        int studentId = Integer.parseInt(request.getParameter("student_id"));
+        int studentId ;
+        int dormitoryId;
+        if (request.getParameter("student_id") == null || request.getParameter("student_id") == ""){
+            studentId = 0;
+        }else {
+            studentId =  Integer.parseInt(request.getParameter("student_id"));
+        }
+        if (request.getParameter("dormitory_id") == null || request.getParameter("dormitory_id") == ""){
+            dormitoryId = 0;
+        }else {
+            dormitoryId =  Integer.parseInt(request.getParameter("dormitory_id"));
+        }
         String name = request.getParameter("name");
+
         int age = Integer.parseInt(request.getParameter("age"));
         String sex = request.getParameter("sex");
         Date birthday = null;
@@ -51,9 +61,11 @@ public class StudentInfoController {
 
         student.setStudent_id(studentId);
         student.setName(name);
+        student.setDormitory_id(dormitoryId);
         student.setAge(age);
         student.setSex(sex);
         student.setBirthday(birthday);
+
 
         studentInfo.addStudent(student);
         return "redirect:listStudent";
@@ -79,9 +91,19 @@ public class StudentInfoController {
     @RequestMapping("/updateStudent")
     public String updateStudent(HttpServletRequest request, HttpServletResponse response){
         Student student = new Student();
+        int studentId ;
+        int dormitoryId;
         int id = Integer.parseInt(request.getParameter("id"));
-        // 获取前端传值
-        int studentId = Integer.parseInt(request.getParameter("student_id"));
+        if (request.getParameter("student_id") == null || request.getParameter("student_id") == ""){
+            studentId = 0;
+        }else {
+            studentId =  Integer.parseInt(request.getParameter("student_id"));
+        }       // 获取前端传值
+        if (request.getParameter("dormitory_id") == null || request.getParameter("dormitory_id") == ""){
+            dormitoryId = 0;
+        }else {
+            dormitoryId =  Integer.parseInt(request.getParameter("dormitory_id"));
+        }
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
         String sex = request.getParameter("sex");
@@ -97,6 +119,7 @@ public class StudentInfoController {
         student.setId(id);
         student.setStudent_id(studentId);
         student.setName(name);
+        student.setDormitory_id(dormitoryId);
         student.setAge(age);
         student.setSex(sex);
         student.setBirthday(birthday);
@@ -141,33 +164,22 @@ public class StudentInfoController {
         Student student = new Student();
         // 获取前端传值
         int studentId ;
-        int age;
+        int dormitoryId;
         if (request.getParameter("student_id") == null || request.getParameter("student_id") == ""){
             studentId = -1;
         }else {
             studentId =  Integer.parseInt(request.getParameter("student_id"));
         }
-        if (request.getParameter("age") == null || request.getParameter("age") == ""){
-            age = -1;
+        if (request.getParameter("dormitory_id") == null || request.getParameter("dormitory_id") == ""){
+            dormitoryId = -1;
         }else {
-            age =  Integer.parseInt(request.getParameter("age"));
+            dormitoryId =  Integer.parseInt(request.getParameter("dormitory_id"));
         }
         String name = request.getParameter("name");
-        String sex = request.getParameter("sex");
-        Date birthday = null;
-        // 将 String 类型的日期按照 yyyy-MM-dd 的格式转换为 java.util.Date 类
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            birthday = simpleDateFormat.parse(request.getParameter("birthday"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
         student.setStudent_id(studentId);
+        student.setDormitory_id(dormitoryId);
         student.setName(name);
-        student.setAge(age);
-        student.setSex(sex);
-        student.setBirthday(birthday);
 
 
         // 获取分页参数
@@ -193,5 +205,14 @@ public class StudentInfoController {
         request.setAttribute("page", page);
         return "listStudent";
     }
-
+    @RequestMapping("/editStudent")
+    protected void editStudent1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
+        Integer id = Integer.parseInt(request.getParameter("id"));
+        Student student = studentInfo.getStudent(id);
+        JSONObject object = new JSONObject();
+        String object1 = object.toJSONString(student);
+        response.getWriter().write(object1);
+    }
 }

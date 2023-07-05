@@ -28,7 +28,7 @@
             }
             function query(id) {
                 $.ajax({
-                    url : "/editStudent1",
+                    url : "/editStudent",
                     async : true,
                     type : "POST",
                     data : {
@@ -50,6 +50,7 @@
                     $("#sex").html(' <input type="radio" name="sex" value="男" id="male"/>&nbsp;&nbsp;<label for="male">男</label><input type="radio" name="sex" checked="checked" value="女" id="woman"/>&nbsp;&nbsp; <label for="woman">女</label>')
                 }
                 $("#student_id").val(data.student_id);
+                $("#dormitory_id").val(data.dormitory_id);
                 $("#name").val(data.name);
                 $("#age").val(data.age);
                 $("#id").val(data.id);
@@ -270,14 +271,8 @@
                                         <td><input type="text" name="student_id" id="student_id1" placeholder="请在这里输入学号"></td>
                                         <td>姓名：</td>
                                         <td><input type="text" name="name" id="name1" placeholder="请在这里输入名字"></td>
-                                        <td>年龄：</td>
-                                        <td><input type="text" name="age" id="age1" placeholder="请在这里输入年龄"></td>
-                                        <td>性别：</td>
-                                        <td><input type="radio" class="radio radio-inline" name="sex" value="男"> 男
-                                            <input type="radio" class="radio radio-inline" name="sex" value="女"> 女
-                                        </td>
-                                        <td>出生日期：</td>
-                                        <td><input type="date" name="birthday" id="birthday1" placeholder="请在这里输入出生日期"></td>
+                                        <td>宿舍号：</td>
+                                        <td><input type="text" name="dormitory_id" id="dormitory_id1" placeholder="请在这里输入宿舍号"></td>
                                         <td colspan="2" align="center">
                                             <button type="submit" class="btn btn-success">查 询</button>
                                         </td>
@@ -290,6 +285,7 @@
                                 <tr>
                                     <th scope="col">学号</th>
                                     <th scope="col">姓名</th>
+                                    <th scope="col">宿舍号</th>
                                     <th scope="col">年龄</th>
                                     <th scope="col">性别</th>
                                     <th scope="col">出生日期</th>
@@ -302,6 +298,7 @@
                                     <tr>
                                         <td>${s.student_id}</td>
                                         <td>${s.name}</td>
+                                        <td>${s.dormitory_id}</td>
                                         <td>${s.age}</td>
                                         <td>${s.sex}</td>
                                         <td>${s.birthday}</td>
@@ -402,6 +399,12 @@
                                    id="name" >
                         </div>
                         <br/>
+                        <div class="input-group">
+                            <span >宿舍号</span>
+                            <input type="text" name="dormitory_id" class="form-control" placeholder="请输入宿舍号"
+                                   id="dormitory_id" >
+                        </div>
+                        <br/>
                         <div class="input-group" >
                             <span>年龄</span>
                             <input type="text" name="age" class="form-control" placeholder="请输入年龄"
@@ -437,7 +440,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"
                             aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel1">修改学生信息</h4>
+                    <h4 class="modal-title" id="myModalLabel1">添加学生信息</h4>
                 </div>
                 <form action="/addStudent" method="post">
                     <div class="modal-body">
@@ -451,6 +454,12 @@
                             <span>姓名</span>
                             <input type="text" name="name" class="form-control" placeholder="请输入姓名"
                                    id="name2" >
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span >宿舍号</span>
+                            <input type="text" name="dormitory_id" class="form-control" placeholder="请输入宿舍号"
+                                   id="dormitory_id2" >
                         </div>
                         <br/>
                         <div class="input-group">

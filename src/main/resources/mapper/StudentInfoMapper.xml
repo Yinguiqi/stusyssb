@@ -8,17 +8,15 @@
 
     <!--void addStudent(Student student); 增加一个学生-->
     <insert id="addStudent" parameterType="Student">
-        INSERT INTO student VALUES(NULL, #{student_id}, #{name}, #{age}, #{sex}, #{birthday})
+        INSERT INTO student VALUES(NULL, #{student_id}, #{name}, #{age}, #{sex}, #{birthday}, #{dormitory_id})
     </insert>
 
     <!--void retrieveStudent(Student student); 查询学生-->
     <select id="retrieveStudent" resultMap="student">
         SELECT * FROM student <where>
         <if test="student_id != -1">and student_id = #{student_id}</if>
-        <if test="name != null and name!=''">and name like concat('%',#{name},'%')</if>
-        <if test="age != -1 ">and age = #{age}</if>
-        <if test="sex != null and sex!=''">and sex = #{sex}</if>
-        <if test="birthday != null and birthday!=''">and birthday = #{birthday}</if></where>
+        <if test="dormitory_id != -1">and dormitory_id = #{dormitory_id}</if>
+        <if test="name != null and name!=''">and name like concat('%',#{name},'%')</if></where>
     </select>
 
     <!--void deleteStudent(int id); 删除一个学生-->
@@ -28,7 +26,7 @@
 
     <!--void updateStudent(Student student); 修改一个学生信息-->
     <update id="updateStudent" parameterType="Student">
-        UPDATE student SET student_id = #{student_id}, name = #{name},
+        UPDATE student SET student_id = #{student_id}, name = #{name},dormitory_id = #{dormitory_id},
                            age = #{age}, sex = #{sex}, birthday = #{birthday} WHERE id = #{id}
     </update>
 
@@ -40,6 +38,7 @@
     <resultMap id="student" type="student">
         <id column="id" property="id"/>
         <result column="student_id" property="student_id"/>
+        <result column="dormitory_id" property="dormitory_id"/>
         <result column="name" property="name"/>
         <result column="age" property="age"/>
         <result column="sex" property="sex"/>
