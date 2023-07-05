@@ -68,6 +68,18 @@
                 // 显示模态框
                 $('#queryInfo').modal('show');
             }
+            function validateForm() {
+                var studentId = document.getElementById('student_id1').value;
+                var name = document.getElementById('name1').value;
+                var dormitoryId = document.getElementById('dormitory_id1').value;
+
+                if (studentId === '' && name === '' && dormitoryId === '') {
+                    alert('请至少输入一个查询条件');
+                    return false; // 阻止表单提交
+                }
+
+                return true; // 允许表单提交
+            }
         </script>
 
     <!-- Scripts -->
@@ -263,9 +275,10 @@
                         <div class="card-header">
                             <strong class="card-title">学生列表</strong>
                         </div>
-                        <div class="card-body">
-                            <form method="post" action="/retrieveStudent" role="form">
-                                <table class="retrieveTable">
+                        <div class="card-body" >
+                            <a href="/listStudent"><button>返 回</button></a>
+                            <form method="post" action="/retrieveStudent" role="form" onsubmit="return validateForm()">
+                                <table class="retrieveTable" style="margin-left: auto; margin-right: 0;">
                                     <tr>
                                         <td>学号：</td>
                                         <td><input type="text" name="student_id" id="student_id1" placeholder="请在这里输入学号"></td>
