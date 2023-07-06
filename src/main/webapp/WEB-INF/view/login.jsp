@@ -44,7 +44,6 @@
                     $.ajax({
                         type:"POST",
                         url:"/StudentLogin",//方法的类型
-                        //data:"userName="+$("#id1").val()+"&password="+$("#id2").val(),
                         data:{"userName":$("#id1").val(),"passWord":$("#id2").val(),"checkcode":$("#checkcode").val()},
                         /*datatype:"application/json",*/
                         success:function(data){

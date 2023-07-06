@@ -1,38 +1,26 @@
 package com.mht.stueaxm.domain;
 
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
 /**
  * @author Kirtico
  * @date 2022/9/9&9:57
  */
+@Data
 public class User {
-    String username;
-    String password;
+   private int id;
+   private String username;
+   private String password;
+   private String email;
+   private String mobile;
+   private LocalDateTime createTime;
+   private LocalDateTime updateTime;
+   private Role role; // 角色信息，与用户关联
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
-
-
+   public User() {
+      // 默认构造方法
+   }
 
 }

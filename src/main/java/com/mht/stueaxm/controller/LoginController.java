@@ -50,8 +50,6 @@ public class LoginController {
             checkcode=checkcode.toLowerCase();
         }
         String checkcode1 = (String)session.getAttribute("checkcode");
-        System.out.println(checkcode1);
-        System.out.println(checkcode);
         if(!checkcode1.toLowerCase().equals(checkcode)){
             out.print("error");
         }else {
@@ -62,6 +60,7 @@ public class LoginController {
             User userStudent = service.login(userName,passWord);
             if (userStudent!=null){
                 out.print("ok");
+                session.setAttribute("userName", userName);
             }else{
                 out.print("no");
             }

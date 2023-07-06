@@ -1,5 +1,6 @@
 package com.mht.stueaxm.config;
 
+import com.mht.stueaxm.lnterceptor.AuthorizationInterceptor;
 import com.mht.stueaxm.lnterceptor.MyInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,12 +17,19 @@ public class MyConfigurer implements WebMvcConfigurer {
     public MyInterceptor myInterceptor(){
         return new MyInterceptor();
     }
+    @Bean
+    public AuthorizationInterceptor authorizationInterceptor(){
+        return new AuthorizationInterceptor();
+    }
     @Override
     public void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(myInterceptor())
                 .addPathPatterns("/**")                         // 拦截全部路径
                 .excludePathPatterns("/");    // 放行部分路径
 
+        registry.addInterceptor(new AuthorizationInterceptor())
+                .addPathPatterns("/listStudent")
+                .excludePathPatterns("/"); // 排除某些路径
     }
 }
 

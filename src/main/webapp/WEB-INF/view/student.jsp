@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2022/9/24
-  Time: 21:30
+  Date: 2023/7/6
+  Time: 13:39
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
@@ -21,66 +21,21 @@
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-        <script src="../../css/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            function create(){
-                $('#queryInfo1').modal('show');
-            }
-            function query(id) {
-                $.ajax({
-                    url : "/editStudent",
-                    async : true,
-                    type : "POST",
-                    data : {
-                        "id" : id
-                    },
-                    // 成功后开启模态框
-                    success :showQuery,
-                    error : function() {
-                        alert("请求失败");
-                    },
-                    dataType : "json"
-                });
-            }
-            function showQuery(data) {
-                var student = eval(data);
-                if (student.sex == '男'){
-                    $("#sex").html('<input type="radio" name="sex" checked="checked" value="男" id="male"/>&nbsp;&nbsp;<label for="male">男</label><input type="radio" name="sex" value="女" id="woman"/>&nbsp;&nbsp; <label for="woman">女</label>')
-                }else {
-                    $("#sex").html(' <input type="radio" name="sex" value="男" id="male"/>&nbsp;&nbsp;<label for="male">男</label><input type="radio" name="sex" checked="checked" value="女" id="woman"/>&nbsp;&nbsp; <label for="woman">女</label>')
-                }
-                $("#student_id").val(data.student_id);
-                $("#dormitory_id").val(data.dormitory_id);
-                $("#name").val(data.name);
-                $("#age").val(data.age);
-                $("#id").val(data.id);
-                var date = new Date(student.birthday);
-                var year = date.getFullYear(),
-                    month = date.getMonth()+1,
-                    day = date.getDate(),
-                    hour = date.getHours(),
-                    min = date.getMinutes(),
-                    sec = date.getSeconds();
-                var newTime = year + '-' +
-                    (month < 10? '0' + month : month) + '-' +
-                    (day < 10? '0' + day : day)
-                $('#birthday').attr("value",newTime);
-                // 显示模态框
-                $('#queryInfo').modal('show');
-            }
-            function validateForm() {
-                var studentId = document.getElementById('student_id1').value;
-                var name = document.getElementById('name1').value;
-                var dormitoryId = document.getElementById('dormitory_id1').value;
+    <script src="../../css/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function validateForm() {
+            var studentId = document.getElementById('student_id1').value;
+            var name = document.getElementById('name1').value;
+            var dormitoryId = document.getElementById('dormitory_id1').value;
 
-                if (studentId === '' && name === '' && dormitoryId === '') {
-                    alert('请至少输入一个查询条件');
-                    return false; // 阻止表单提交
-                }
-
-                return true; // 允许表单提交
+            if (studentId === '' && name === '' && dormitoryId === '') {
+                alert('请至少输入一个查询条件');
+                return false; // 阻止表单提交
             }
-        </script>
+
+            return true; // 允许表单提交
+        }
+    </script>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
@@ -104,8 +59,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="../../css/assets/css/cs-skin-elastic.css">
-        <link rel="stylesheet" href="../../css/assets/css/style.css">
+    <link rel="stylesheet" href="../../css/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../../css/assets/css/style.css">
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
 <body>
@@ -256,8 +211,8 @@
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
                                 <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">学生</a></li>
-                                <li class="active">管理员</li>
+                                <li class="active">学生</li>
+                                <li><a href="#">管理员</a></li>
                             </ol>
                         </div>
                     </div>
@@ -315,10 +270,6 @@
                                         <td>${s.age}</td>
                                         <td>${s.sex}</td>
                                         <td>${s.birthday}</td>
-                                            <%--修改学生信息--%>
-                                        <td><a class="queryA" href="javascript:void(0)" onclick="query(${s.id})" ><span class="glyphicon glyphicon-edit"></span> </a></td>
-                                            <%--删除学生信息--%>
-                                        <td><a href="/deleteStudent?id=${s.id}"><span class="glyphicon glyphicon-trash"></span> </a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -343,7 +294,7 @@
                                         <c:if test="${status.count*page.count-page.start<=30 && status.count*page.count-page.start>=-10}">
                                             <li <c:if test="${status.index*page.count==page.start}">class="disabled"</c:if>>
                                                 <a href="?page.start=${status.index*page.count}"
-                                                        <c:if test="${status.index*page.count==page.start}">class="current"</c:if>
+                                                   <c:if test="${status.index*page.count==page.start}">class="current"</c:if>
                                                 >${status.count}</a>
                                             </li>
                                         </c:if>
@@ -361,7 +312,6 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <button onclick="create()">添加学生</button>
                         </div>
                     </div>
                 </div>
@@ -387,122 +337,6 @@
 
 </div><!-- /#right-panel -->
 
-<!-- Right Panel -->
-<!-- 修改学生详细信息模态框（Modal） -->
-    <div class="modal" id="queryInfo" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">修改学生信息</h4>
-                </div>
-                <form action="/updateStudent" method="post">
-                    <div class="modal-body">
-                        <div class="input-group">
-                            <span >学号</span>
-                            <input type="text" name="student_id" class="form-control" placeholder="请输入学号"
-                                   id="student_id" >
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span>姓名</span>
-                            <input type="text" name="name" class="form-control" placeholder="请输入姓名"
-                                   id="name" >
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span >宿舍号</span>
-                            <input type="text" name="dormitory_id" class="form-control" placeholder="请输入宿舍号"
-                                   id="dormitory_id" >
-                        </div>
-                        <br/>
-                        <div class="input-group" >
-                            <span>年龄</span>
-                            <input type="text" name="age" class="form-control" placeholder="请输入年龄"
-                                   id="age" >
-                        </div>
-                        <br/>
-                        <div class="input-group" id="sex">
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span>出生日期</span>
-                            <input type="date" name="birthday" id="birthday"  placeholder="请在这里输入出生日期">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="id" id = "id" >
-                        <button type="submit" class="btn btn-success">提 交</button>
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal">关闭</button>
-                        <!-- <button type="submit" class="btn btn-primary">提交</button> -->
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal -->
-    </div>
-<!-- 创建学生详细信息模态框（Modal） -->
-    <div class="modal" id="queryInfo1" tabindex="-1" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel1">添加学生信息</h4>
-                </div>
-                <form action="/addStudent" method="post">
-                    <div class="modal-body">
-                        <div class="input-group">
-                            <span >学号</span>
-                            <input type="text" name="student_id" class="form-control" placeholder="请输入学号"
-                                   id="student_id2" >
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span>姓名</span>
-                            <input type="text" name="name" class="form-control" placeholder="请输入姓名"
-                                   id="name2" >
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span >宿舍号</span>
-                            <input type="text" name="dormitory_id" class="form-control" placeholder="请输入宿舍号"
-                                   id="dormitory_id2" >
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span>年龄</span>
-                            <input type="text" name="age" class="form-control" placeholder="请输入年龄"
-                                   id="age2" >
-                        </div>
-                        <br/>
-                        <div class="input-group" id="sex2">
-                            <input type="radio" class="radio radio-inline" name="sex" value="男"> 男
-                            <input type="radio" class="radio radio-inline" name="sex" value="女"> 女
-                        </div>
-                        <br/>
-                        <div class="input-group">
-                            <span>出生日期</span>
-                            <input type="date" name="birthday" id="birthday2"  placeholder="请在这里输入出生日期">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="id" id = "id2" >
-                        <button type="submit" class="btn btn-success">提 交</button>
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal">关闭</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal -->
-    </div>
 </div>
 </body>
 </html>
