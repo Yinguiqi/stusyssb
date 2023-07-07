@@ -159,8 +159,8 @@ public class StudentInfoController {
         return "listStudent";
     }
 
-    @RequestMapping("/retrieveStudent")
-    public String retrieveStudent(HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping("/adminRetrieveStudent")
+    public String adminRetrieveStudent(HttpServletRequest request, HttpServletResponse response){
         Student student = new Student();
         // 获取前端传值
         int studentId ;
@@ -214,5 +214,79 @@ public class StudentInfoController {
         JSONObject object = new JSONObject();
         String object1 = object.toJSONString(student);
         response.getWriter().write(object1);
+    }
+
+    @RequestMapping("/student")
+    public String student(HttpServletRequest request, HttpServletResponse response) {
+
+        // 获取分页参数
+        int start = 0;
+        int count = 6;
+
+        try {
+            start = Integer.parseInt(request.getParameter("page.start"));
+            count = Integer.parseInt(request.getParameter("page.count"));
+        } catch (Exception e) {
+        }
+
+        // 创建分页模型
+        Page page = new Page(start, count);
+
+        // 按照页码查询学生信息
+        List<Student> students = studentInfo.list(page.getStart(), page.getCount());
+        int total = studentInfo.getTotal();
+        page.setTotal(total);
+
+        // 将查询出来的学生信息放在域中
+        request.setAttribute("students", students);
+        request.setAttribute("page", page);
+
+        return "student";
+    }
+    @RequestMapping("/retrieveStudent")
+    public String retrieveStudent(HttpServletRequest request, HttpServletResponse response){
+        Student student = new Student();
+        // 获取前端传值
+        int studentId ;
+        int dormitoryId;
+        if (request.getParameter("student_id") == null || request.getParameter("student_id") == ""){
+            studentId = -1;
+        }else {
+            studentId =  Integer.parseInt(request.getParameter("student_id"));
+        }
+        if (request.getParameter("dormitory_id") == null || request.getParameter("dormitory_id") == ""){
+            dormitoryId = -1;
+        }else {
+            dormitoryId =  Integer.parseInt(request.getParameter("dormitory_id"));
+        }
+        String name = request.getParameter("name");
+
+        student.setStudent_id(studentId);
+        student.setDormitory_id(dormitoryId);
+        student.setName(name);
+
+
+        // 获取分页参数
+        int start = 0;
+        int count = 6;
+
+        try {
+            start = Integer.parseInt(request.getParameter("page.start"));
+            count = Integer.parseInt(request.getParameter("page.count"));
+        } catch (Exception e) {
+        }
+
+        // 创建分页模型
+        Page page = new Page(start, count);
+
+        // 按照页码查询学生信息
+        List<Student> students = studentInfo.retrieveStudent(student);
+        int total = students.size();
+        page.setTotal(total);
+
+        // 将查询出来的学生信息放在域中
+        request.setAttribute("students", students);
+        request.setAttribute("page", page);
+        return "student";
     }
 }

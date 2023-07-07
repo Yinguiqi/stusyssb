@@ -19,4 +19,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     public User getUserByName(String userName) {
         return  userDao.getUserByName(userName);
     }
+
+    public int getRoleByUserId(int user_id){ return userDao.getRoleByUserId(user_id);}
+
+    public int getPermissionByRoleId(int role_id){ return userDao.getPermissionByRoleId(role_id);}
 }

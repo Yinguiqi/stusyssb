@@ -231,7 +231,7 @@
                             <strong class="card-title">学生列表</strong>
                         </div>
                         <div class="card-body" >
-                            <a href="/listStudent"><button>返 回</button></a>
+                            <a href="/student"><button>返 回</button></a>
                             <form method="post" action="/retrieveStudent" role="form" onsubmit="return validateForm()">
                                 <table class="retrieveTable" style="margin-left: auto; margin-right: 0;">
                                     <tr>
@@ -257,8 +257,6 @@
                                     <th scope="col">年龄</th>
                                     <th scope="col">性别</th>
                                     <th scope="col">出生日期</th>
-                                    <th scope="col">编辑</th>
-                                    <th scope="col">删除</th>
                                 </tr>
                                 </thead>
                                 <tbody>

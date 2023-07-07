@@ -1,5 +1,6 @@
 package com.mht.stueaxm.service;
 
+import com.mht.stueaxm.domain.Role;
 import com.mht.stueaxm.domain.User;
 
 import java.util.List;
@@ -11,4 +12,8 @@ import java.util.List;
 public interface UserInfoService {
 
     User getUserByName(String userName);
+
+    int getRoleByUserId(int user_id);
+
+    int getPermissionByRoleId(int role_id);
 }

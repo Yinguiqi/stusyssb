@@ -27,7 +27,7 @@ public class MyConfigurer implements WebMvcConfigurer {
                 .addPathPatterns("/**")                         // 拦截全部路径
                 .excludePathPatterns("/");    // 放行部分路径
 
-        registry.addInterceptor(new AuthorizationInterceptor())
+        registry.addInterceptor(authorizationInterceptor())
                 .addPathPatterns("/listStudent")
                 .excludePathPatterns("/"); // 排除某些路径
     }

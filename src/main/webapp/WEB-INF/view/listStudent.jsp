@@ -277,7 +277,7 @@
                         </div>
                         <div class="card-body" >
                             <a href="/listStudent"><button>返 回</button></a>
-                            <form method="post" action="/retrieveStudent" role="form" onsubmit="return validateForm()">
+                            <form method="post" action="/adminRetrieveStudent" role="form" onsubmit="return validateForm()">
                                 <table class="retrieveTable" style="margin-left: auto; margin-right: 0;">
                                     <tr>
                                         <td>学号：</td>

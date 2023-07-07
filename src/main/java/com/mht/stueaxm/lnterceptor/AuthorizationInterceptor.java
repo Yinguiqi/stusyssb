@@ -27,11 +27,12 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         String userName = (String) request.getSession().getAttribute("userName");
         System.out.println("userName: " + userName);
         User user = userService.getUserByName(userName);
-        Role role = user.getRole(); // 假设用户与角色关联
-        Permission permission = role.getPermission(); // 假设角色与权限关联
+        int user_id = user.getId();
+        int role_id = userService.getRoleByUserId(user_id);
+        int permission_id = userService.getPermissionByRoleId(role_id);
 
         // 判断用户权限是否允许访问页面
-        if (!permission.getName().equals("AdminUsers")) {
+        if (permission_id == 1) {
             response.sendRedirect("/student");
             return false;
         }

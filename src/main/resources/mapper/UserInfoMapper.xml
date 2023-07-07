@@ -6,6 +6,14 @@
     <select id="getUserByName" resultMap="user" parameterType="String" >
         SELECT * FROM user WHERE username = #{userName}
     </select>
+
+    <select id="getRoleByUserId" resultType="int" parameterType="int">
+        SELECT role_id FROM user_role WHERE user_id = #{user_id};
+    </select>
+
+    <select id="getPermissionByRoleId" resultType="int"  parameterType="int">
+        SELECT permission_id FROM role_permission WHERE role_id = #{role_id};
+    </select>
     <resultMap id="user" type="user">
         <id property="id" column="id" />
         <result property="username" column="username" />
@@ -19,4 +27,6 @@
             <result property="roleName" column="role_name" />
         </association>
     </resultMap>
+
+
 </mapper>

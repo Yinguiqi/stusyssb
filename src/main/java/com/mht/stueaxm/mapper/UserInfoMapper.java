@@ -14,4 +14,8 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface UserInfoMapper {
     User getUserByName(String userName);
+
+    int getRoleByUserId(int user_id);
+
+    int getPermissionByRoleId(int role_id);
 }
