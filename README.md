@@ -1,28 +1,51 @@
 # 齐工学生宿舍管理系统
-本质是非常基础的一个Spring Boot项目尝试
-//以下内容由chatgpt指导编写
+
 ## 项目简介
-项目是自己独立开发的一个spring boot项目，最终目标大概是希望实现宿舍管理的各种功能吧，但目前来说它只有用户登录功能和增删查改学生的功能，以后我会慢慢增加一些新的功能。
+齐工学生宿舍管理系统是一个基于 Spring Boot 的学生宿舍管理应用。它提供了管理宿舍里学生信息的功能，并采用了 Spring MVC、MySQL、Maven 和 MyBatis 技术栈。前端方面使用了 jsp、Bootstrap 和 layui 等框架。系统还使用拦截器实现了登录验证和基于 RBAC 模型的权限管理。
 
 ## 技术栈
-把目前我学的东西尽量都用上了
-- Spring Boot
-- Spring MVC
-- MySQL
-- Maven
-- MyBatis
-- 前端还是用的jsp和Bootstrap，其实想用vue来着，但还没系统地学
+- 后端：Spring Boot、Spring MVC、MySQL、Maven、MyBatis
+- 前端：jsp、Bootstrap、layui
 
 ## 功能特性
-- 用户登录：实现用户登录功能，包括验证用户名和密码。
-- 验证码校验：使用验证码来增强安全性，确保用户输入的验证码与生成的验证码一致。
-- 学生数据管理：实现学生信息的增删查改功能，包括学生的姓名、年龄、性别等信息。
-- 增加和更改使用了Bootstrap的模态框。背景是随便找的一个Bootstrap主题，到时候得改改。
+- 学生信息管理：管理员账号登录后可以执行增加、删除、查询和修改学生信息的操作。
+- 权限管理：使用拦截器实现了基于 RBAC 模型的权限管理，管理员账号具有完整的功能权限，普通账号只能查看学生信息。
+- 动态代理：使用了Profile 进行动态配置切换
+- 错误页面处理：系统配置了错误页面的回跳转功能，当出现错误时，会自动跳转到指定的错误页面。（一般不会出错）
 
 ## 快速开始
-//话说我还没给这个项目里上传一个数据库文件。
-如果用idea的话就是把这个拉取到本地，idea打开，然后在配置信息那里设置数据库地址就行。
-如果要上传到虚拟机里，可以看看这个大佬写的教程https://github.com/cativen/fishexam
+### 前提条件
+- JDK 8 或更高版本
+- Maven 3.x
+- MySQL 数据库
+  
+### 安装和配置
+克隆项目到本地：
+```BASH
+git clone https://github.com/Yinguiqi/stusyssb.git
+```
+
+进入项目目录：
+```BASH
+cd stusyssb
+```
+
+修改数据库配置：
+
+打开 src/main/resources/application-dev.yml 文件。
+根据你的 MySQL 配置，修改以下属性：
+```java
+spring.datasource.url=jdbc:mysql://localhost:3306/student_dormitory_management
+spring.datasource.username=your-username
+spring.datasource.password=your-password
+```
+
+编译和运行：
+```BASH
+mvn spring-boot:run
+```
+
+在浏览器中访问：http://localhost:8080
 
 ## 许可证
 该项目使用 GPL（GNU General Public License） 许可证。
