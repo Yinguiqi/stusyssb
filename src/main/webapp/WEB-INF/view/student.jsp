@@ -24,9 +24,9 @@
     <script src="../../css/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function validateForm() {
-            var studentId = document.getElementById('student_id1').value;
+            var studentId = document.getElementById('studentId1').value;
             var name = document.getElementById('name1').value;
-            var dormitoryId = document.getElementById('dormitory_id1').value;
+            var dormitoryId = document.getElementById('dormitoryId1').value;
 
             if (studentId === '' && name === '' && dormitoryId === '') {
                 alert('请至少输入一个查询条件');
@@ -236,11 +236,11 @@
                                 <table class="retrieveTable" style="margin-left: auto; margin-right: 0;">
                                     <tr>
                                         <td>学号：</td>
-                                        <td><input type="text" name="student_id" id="student_id1" placeholder="请在这里输入学号"></td>
+                                        <td><input type="text" name="studentId" id="studentId1" placeholder="请在这里输入学号"></td>
                                         <td>姓名：</td>
                                         <td><input type="text" name="name" id="name1" placeholder="请在这里输入名字"></td>
                                         <td>宿舍号：</td>
-                                        <td><input type="text" name="dormitory_id" id="dormitory_id1" placeholder="请在这里输入宿舍号"></td>
+                                        <td><input type="text" name="dormitoryId" id="dormitoryId1" placeholder="请在这里输入宿舍号"></td>
                                         <td colspan="2" align="center">
                                             <button type="submit" class="btn btn-success">查 询</button>
                                         </td>
@@ -262,9 +262,9 @@
                                 <tbody>
                                 <c:forEach items="${students}" var="s" varStatus="status">
                                     <tr>
-                                        <td>${s.student_id}</td>
+                                        <td>${s.studentId}</td>
                                         <td>${s.name}</td>
-                                        <td>${s.dormitory_id}</td>
+                                        <td>${s.dormitoryId}</td>
                                         <td>${s.age}</td>
                                         <td>${s.sex}</td>
                                         <td>${s.birthday}</td>

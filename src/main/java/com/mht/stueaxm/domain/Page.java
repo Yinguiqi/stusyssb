@@ -1,9 +1,12 @@
 package com.mht.stueaxm.domain;
 
+import lombok.Data;
+
 /**
  * @author Kirtico
  * @date 2022/9/14&17:21
  */
+@Data
 public class Page {
     int start;      // 开始数据
     int count;      // 每一页的数量
@@ -18,29 +21,6 @@ public class Page {
         this.total = total;
     }
 
-    public int getStart() {
-        return start;
-    }
-
-    public void setStart(int start) {
-        this.start = start;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
 
     public Page(int start, int count) {
         super();

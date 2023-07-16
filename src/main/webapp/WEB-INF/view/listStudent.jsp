@@ -49,8 +49,8 @@
                 }else {
                     $("#sex").html(' <input type="radio" name="sex" value="男" id="male"/>&nbsp;&nbsp;<label for="male">男</label><input type="radio" name="sex" checked="checked" value="女" id="woman"/>&nbsp;&nbsp; <label for="woman">女</label>')
                 }
-                $("#student_id").val(data.student_id);
-                $("#dormitory_id").val(data.dormitory_id);
+                $("#studentId").val(data.studentId);
+                $("#dormitoryId").val(data.dormitoryId);
                 $("#name").val(data.name);
                 $("#age").val(data.age);
                 $("#id").val(data.id);
@@ -69,9 +69,9 @@
                 $('#queryInfo').modal('show');
             }
             function validateForm() {
-                var studentId = document.getElementById('student_id1').value;
+                var studentId = document.getElementById('studentId1').value;
                 var name = document.getElementById('name1').value;
-                var dormitoryId = document.getElementById('dormitory_id1').value;
+                var dormitoryId = document.getElementById('dormitoryId1').value;
 
                 if (studentId === '' && name === '' && dormitoryId === '') {
                     alert('请至少输入一个查询条件');
@@ -281,11 +281,11 @@
                                 <table class="retrieveTable" style="margin-left: auto; margin-right: 0;">
                                     <tr>
                                         <td>学号：</td>
-                                        <td><input type="text" name="student_id" id="student_id1" placeholder="请在这里输入学号"></td>
+                                        <td><input type="text" name="studentId" id="studentId1" placeholder="请在这里输入学号"></td>
                                         <td>姓名：</td>
                                         <td><input type="text" name="name" id="name1" placeholder="请在这里输入名字"></td>
                                         <td>宿舍号：</td>
-                                        <td><input type="text" name="dormitory_id" id="dormitory_id1" placeholder="请在这里输入宿舍号"></td>
+                                        <td><input type="text" name="dormitoryId" id="dormitoryId1" placeholder="请在这里输入宿舍号"></td>
                                         <td colspan="2" align="center">
                                             <button type="submit" class="btn btn-success">查 询</button>
                                         </td>
@@ -309,9 +309,9 @@
                                 <tbody>
                                 <c:forEach items="${students}" var="s" varStatus="status">
                                     <tr>
-                                        <td>${s.student_id}</td>
+                                        <td>${s.studentId}</td>
                                         <td>${s.name}</td>
-                                        <td>${s.dormitory_id}</td>
+                                        <td>${s.dormitoryId}</td>
                                         <td>${s.age}</td>
                                         <td>${s.sex}</td>
                                         <td>${s.birthday}</td>
@@ -402,8 +402,8 @@
                     <div class="modal-body">
                         <div class="input-group">
                             <span >学号</span>
-                            <input type="text" name="student_id" class="form-control" placeholder="请输入学号"
-                                   id="student_id" >
+                            <input type="text" name="studentId" class="form-control" placeholder="请输入学号"
+                                   id="studentId" >
                         </div>
                         <br/>
                         <div class="input-group">
@@ -414,8 +414,8 @@
                         <br/>
                         <div class="input-group">
                             <span >宿舍号</span>
-                            <input type="text" name="dormitory_id" class="form-control" placeholder="请输入宿舍号"
-                                   id="dormitory_id" >
+                            <input type="text" name="dormitoryId" class="form-control" placeholder="请输入宿舍号"
+                                   id="dormitoryId" >
                         </div>
                         <br/>
                         <div class="input-group" >
@@ -459,8 +459,8 @@
                     <div class="modal-body">
                         <div class="input-group">
                             <span >学号</span>
-                            <input type="text" name="student_id" class="form-control" placeholder="请输入学号"
-                                   id="student_id2" >
+                            <input type="text" name="studentId" class="form-control" placeholder="请输入学号"
+                                   id="studentId2" >
                         </div>
                         <br/>
                         <div class="input-group">
@@ -471,8 +471,8 @@
                         <br/>
                         <div class="input-group">
                             <span >宿舍号</span>
-                            <input type="text" name="dormitory_id" class="form-control" placeholder="请输入宿舍号"
-                                   id="dormitory_id2" >
+                            <input type="text" name="dormitoryId" class="form-control" placeholder="请输入宿舍号"
+                                   id="dormitoryId2" >
                         </div>
                         <br/>
                         <div class="input-group">

@@ -1,5 +1,8 @@
 package com.mht.stueaxm.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mht.stueaxm.domain.Student;
 import com.mht.stueaxm.domain.User;
 import com.mht.stueaxm.mapper.LoginMapper;
@@ -15,15 +18,17 @@ import java.util.List;
  * @date 2022/9/9&10:28
  */
 @Service
-public class LoginServiceImpl implements LoginService {
-
+public class LoginServiceImpl extends ServiceImpl<LoginMapper,User> implements LoginService {
     // 自动注入
     @Autowired
     private LoginMapper userDao;
 
     @Override
-    public  User login(String username,String password)  {
-        return userDao.selectUser(username,password);
+    public User login(String username,String password)  {
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        // 直接调用BaseMapper的方法
+        return userDao.selectOne(wrapper.eq("username", username).eq("password", password));
+
     }
 
 }

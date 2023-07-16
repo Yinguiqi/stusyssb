@@ -22,10 +22,6 @@
         <result property="mobile" column="mobile" />
         <result property="createTime" column="create_time" />
         <result property="updateTime" column="update_time" />
-        <association property="role" javaType="Role">
-            <id property="roleId" column="role_id" />
-            <result property="roleName" column="role_name" />
-        </association>
     </resultMap>
 
 

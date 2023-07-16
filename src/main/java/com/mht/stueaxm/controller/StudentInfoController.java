@@ -36,15 +36,15 @@ public class StudentInfoController {
         Student student = new Student();
         int studentId ;
         int dormitoryId;
-        if (request.getParameter("student_id") == null || request.getParameter("student_id") == ""){
+        if (request.getParameter("studentId") == null || request.getParameter("studentId") == ""){
             studentId = 0;
         }else {
-            studentId =  Integer.parseInt(request.getParameter("student_id"));
+            studentId =  Integer.parseInt(request.getParameter("studentId"));
         }
-        if (request.getParameter("dormitory_id") == null || request.getParameter("dormitory_id") == ""){
+        if (request.getParameter("dormitoryId") == null || request.getParameter("dormitoryId") == ""){
             dormitoryId = 0;
         }else {
-            dormitoryId =  Integer.parseInt(request.getParameter("dormitory_id"));
+            dormitoryId =  Integer.parseInt(request.getParameter("dormitoryId"));
         }
         String name = request.getParameter("name");
 
@@ -59,9 +59,9 @@ public class StudentInfoController {
             e.printStackTrace();
         }
 
-        student.setStudent_id(studentId);
+        student.setStudentId(studentId);
         student.setName(name);
-        student.setDormitory_id(dormitoryId);
+        student.setDormitoryId(dormitoryId);
         student.setAge(age);
         student.setSex(sex);
         student.setBirthday(birthday);
@@ -94,15 +94,15 @@ public class StudentInfoController {
         int studentId ;
         int dormitoryId;
         int id = Integer.parseInt(request.getParameter("id"));
-        if (request.getParameter("student_id") == null || request.getParameter("student_id") == ""){
+        if (request.getParameter("studentId") == null || request.getParameter("studentId") == ""){
             studentId = 0;
         }else {
-            studentId =  Integer.parseInt(request.getParameter("student_id"));
+            studentId =  Integer.parseInt(request.getParameter("studentId"));
         }       // 获取前端传值
-        if (request.getParameter("dormitory_id") == null || request.getParameter("dormitory_id") == ""){
+        if (request.getParameter("dormitoryId") == null || request.getParameter("dormitoryId") == ""){
             dormitoryId = 0;
         }else {
-            dormitoryId =  Integer.parseInt(request.getParameter("dormitory_id"));
+            dormitoryId =  Integer.parseInt(request.getParameter("dormitoryId"));
         }
         String name = request.getParameter("name");
         int age = Integer.parseInt(request.getParameter("age"));
@@ -117,9 +117,9 @@ public class StudentInfoController {
         }
 
         student.setId(id);
-        student.setStudent_id(studentId);
+        student.setStudentId(studentId);
         student.setName(name);
-        student.setDormitory_id(dormitoryId);
+        student.setDormitoryId(dormitoryId);
         student.setAge(age);
         student.setSex(sex);
         student.setBirthday(birthday);
@@ -161,25 +161,25 @@ public class StudentInfoController {
 
     @RequestMapping("/adminRetrieveStudent")
     public String adminRetrieveStudent(HttpServletRequest request, HttpServletResponse response){
-        Student student = new Student();
+//        Student student = new Student();
         // 获取前端传值
         int studentId ;
         int dormitoryId;
-        if (request.getParameter("student_id") == null || request.getParameter("student_id") == ""){
+        if (request.getParameter("studentId") == null || request.getParameter("studentId") == ""){
             studentId = -1;
         }else {
-            studentId =  Integer.parseInt(request.getParameter("student_id"));
+            studentId =  Integer.parseInt(request.getParameter("studentId"));
         }
-        if (request.getParameter("dormitory_id") == null || request.getParameter("dormitory_id") == ""){
+
+        if (request.getParameter("dormitoryId") == null || request.getParameter("dormitoryId") == ""){
             dormitoryId = -1;
         }else {
-            dormitoryId =  Integer.parseInt(request.getParameter("dormitory_id"));
+            dormitoryId =  Integer.parseInt(request.getParameter("dormitoryId"));
         }
         String name = request.getParameter("name");
-
-        student.setStudent_id(studentId);
-        student.setDormitory_id(dormitoryId);
-        student.setName(name);
+//        student.setstudentId(studentId);
+//        student.setdormitoryId(dormitoryId);
+//        student.setName(name);
 
 
         // 获取分页参数
@@ -196,7 +196,8 @@ public class StudentInfoController {
         Page page = new Page(start, count);
 
         // 按照页码查询学生信息
-        List<Student> students = studentInfo.retrieveStudent(student);
+        List<Student> students = studentInfo.retrieveStudent(studentId,dormitoryId,name);
+        students.forEach(System.out::println);
         int total = students.size();
         page.setTotal(total);
 
@@ -245,25 +246,26 @@ public class StudentInfoController {
     }
     @RequestMapping("/retrieveStudent")
     public String retrieveStudent(HttpServletRequest request, HttpServletResponse response){
-        Student student = new Student();
+        //        Student student = new Student();
         // 获取前端传值
-        int studentId ;
-        int dormitoryId;
-        if (request.getParameter("student_id") == null || request.getParameter("student_id") == ""){
-            studentId = -1;
-        }else {
-            studentId =  Integer.parseInt(request.getParameter("student_id"));
-        }
-        if (request.getParameter("dormitory_id") == null || request.getParameter("dormitory_id") == ""){
-            dormitoryId = -1;
-        }else {
-            dormitoryId =  Integer.parseInt(request.getParameter("dormitory_id"));
-        }
+//        int studentId ;
+//        int dormitoryId;
+//        if (request.getParameter("studentId") == null || request.getParameter("studentId") == ""){
+//            studentId = -1;
+//        }else {
+//            studentId =  Integer.parseInt(request.getParameter("studentId"));
+//        }
+//        if (request.getParameter("dormitoryId") == null || request.getParameter("dormitoryId") == ""){
+//            dormitoryId = -1;
+//        }else {
+//            dormitoryId =  Integer.parseInt(request.getParameter("dormitoryId"));
+//        }
         String name = request.getParameter("name");
-
-        student.setStudent_id(studentId);
-        student.setDormitory_id(dormitoryId);
-        student.setName(name);
+        int studentId = Integer.parseInt(request.getParameter("studentId"));
+        int dormitoryId = Integer.parseInt(request.getParameter("dormitoryId"));
+//        student.setstudentId(studentId);
+//        student.setdormitoryId(dormitoryId);
+//        student.setName(name);
 
 
         // 获取分页参数
@@ -280,7 +282,7 @@ public class StudentInfoController {
         Page page = new Page(start, count);
 
         // 按照页码查询学生信息
-        List<Student> students = studentInfo.retrieveStudent(student);
+        List<Student> students = studentInfo.retrieveStudent(studentId,dormitoryId,name);
         int total = students.size();
         page.setTotal(total);
 

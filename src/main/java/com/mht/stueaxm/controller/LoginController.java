@@ -26,7 +26,6 @@ import java.util.Random;
  */
 @Controller
 @SessionAttributes("user")
-
 public class LoginController {
     //LoginServiceImpl loginService = new LoginServiceImpl();
     @Autowired

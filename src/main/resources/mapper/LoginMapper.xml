@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mht.stueaxm.mapper.LoginMapper">
-    <select id="selectUser" parameterType="com.mht.stueaxm.domain.User" resultType="com.mht.stueaxm.domain.User" >
-        select * from user
-        where
-            username=#{username}
-          and password=#{password}
-    </select>
+<!--    <select id="selectUser" parameterType="com.mht.stueaxm.domain.User" resultType="com.mht.stueaxm.domain.User" >-->
+<!--        select * from user-->
+<!--        where-->
+<!--            username=#{username}-->
+<!--          and password=#{password}-->
+<!--    </select>-->
 
 </mapper>
-        <!--void retrieveStudent(Student student); 查询学生-->
-<!--<select id="retrieveStudent" parameterType="cn.langxi.login.domain.Student" resultType="cn.langxi.login.domain.Student">-->
-<!--SELECT * FROM student <where>-->
-<!--    <if test="student_id != null and student_id!=''">and student_id = #{student_id}</if>-->
-<!--    <if test="name != null and name!=''">and name like concat('%',#{name},'%')</if>-->
-<!--    <if test="age != null and age!='' ">and age = #{age}</if>-->
-<!--    <if test="sex != null and sex!=''">and sex = #{sex}</if>-->
-<!--    <if test="birthday != null and birthday!=''">and birthday = #{birthday}</if></where>-->
-<!--</select>-->

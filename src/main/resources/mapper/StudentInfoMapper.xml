@@ -2,43 +2,43 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mht.stueaxm.mapper.StudentInfoMapper">
     <!--int getTotal(); 获取学生总个数-->
-    <select id="getTotal" resultType="int">
-        SELECT COUNT(*) FROM student
-    </select>
+<!--    <select id="getTotal" resultType="int">-->
+<!--        SELECT COUNT(*) FROM student-->
+<!--    </select>-->
 
     <!--void addStudent(Student student); 增加一个学生-->
-    <insert id="addStudent" parameterType="Student">
-        INSERT INTO student VALUES(NULL, #{student_id}, #{name}, #{age}, #{sex}, #{birthday}, #{dormitory_id})
-    </insert>
+<!--    <insert id="addStudent" parameterType="Student">-->
+<!--        INSERT INTO student VALUES(NULL, #{studentId}, #{name}, #{age}, #{sex}, #{birthday}, #{dormitoryId})-->
+<!--    </insert>-->
 
     <!--void retrieveStudent(Student student); 查询学生-->
-    <select id="retrieveStudent" resultMap="student">
-        SELECT * FROM student <where>
-        <if test="student_id != -1">and student_id = #{student_id}</if>
-        <if test="dormitory_id != -1">and dormitory_id = #{dormitory_id}</if>
-        <if test="name != null and name!=''">and name like concat('%',#{name},'%')</if></where>
-    </select>
+<!--    <select id="retrieveStudent" resultMap="student">-->
+<!--        SELECT * FROM student <where>-->
+<!--        <if test="studentId != -1">and studentId = #{studentId}</if>-->
+<!--        <if test="dormitoryId != -1">and dormitoryId = #{dormitoryId}</if>-->
+<!--        <if test="name != null and name!=''">and name like concat('%',#{name},'%')</if></where>-->
+<!--    </select>-->
 
     <!--void deleteStudent(int id); 删除一个学生-->
-    <delete id="deleteStudent" parameterType="int">
-        DELETE FROM student WHERE id = #{id}
-    </delete>
+<!--    <delete id="deleteStudent" parameterType="int">-->
+<!--        DELETE FROM student WHERE id = #{id}-->
+<!--    </delete>-->
 
     <!--void updateStudent(Student student); 修改一个学生信息-->
-    <update id="updateStudent" parameterType="Student">
-        UPDATE student SET student_id = #{student_id}, name = #{name},dormitory_id = #{dormitory_id},
-                           age = #{age}, sex = #{sex}, birthday = #{birthday} WHERE id = #{id}
-    </update>
+<!--    <update id="updateStudent" parameterType="Student">-->
+<!--        UPDATE student SET studentId = #{studentId}, name = #{name},dormitoryId = #{dormitoryId},-->
+<!--                           age = #{age}, sex = #{sex}, birthday = #{birthday} WHERE id = #{id}-->
+<!--    </update>-->
 
     <!--Student getStudent(int id); 根据 id 查询一个学生信息-->
-    <select id="getStudent" resultMap="student" parameterType="int">
-        SELECT * FROM student WHERE id = #{id}
-    </select>
+<!--    <select id="getStudent" resultMap="student" parameterType="int">-->
+<!--        SELECT * FROM student WHERE id = #{id}-->
+<!--    </select>-->
 
     <resultMap id="student" type="student">
         <id column="id" property="id"/>
-        <result column="student_id" property="student_id"/>
-        <result column="dormitory_id" property="dormitory_id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="dormitory_id" property="dormitoryId"/>
         <result column="name" property="name"/>
         <result column="age" property="age"/>
         <result column="sex" property="sex"/>

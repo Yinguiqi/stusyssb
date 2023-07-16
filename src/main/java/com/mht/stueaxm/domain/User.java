@@ -1,5 +1,8 @@
 package com.mht.stueaxm.domain;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -10,6 +13,7 @@ import java.time.LocalDateTime;
  */
 @Data
 public class User {
+   @TableId(value = "id", type = IdType.AUTO)//指定自增策略
    private int id;
    private String username;
    private String password;
@@ -17,7 +21,6 @@ public class User {
    private String mobile;
    private LocalDateTime createTime;
    private LocalDateTime updateTime;
-   private Role role; // 角色信息，与用户关联
 
    public User() {
       // 默认构造方法
