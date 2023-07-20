@@ -43,6 +43,7 @@
         <result column="age" property="age"/>
         <result column="sex" property="sex"/>
         <result column="birthday" property="birthday" javaType="java.sql.Date"/>
+        <result column="left_dorm" property="leftDorm"/>
     </resultMap>
     <!--List<Student> list(int start, int count); 查询从start位置开始的count条数据-->
     <select id="list" resultMap="student">

@@ -13,3 +13,7 @@ mybatis-plus:
   type-aliases-package: com.mht.stueaxm.domain
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+  type-enums-package: com.mht.stueaxm.domain
+
+

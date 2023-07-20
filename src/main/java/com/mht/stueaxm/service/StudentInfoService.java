@@ -9,7 +9,7 @@ import java.util.List;
  * @author Kirtico
  * @date 2023/7/3&20:25
  */
-public interface StudentInfoService  {
+public interface StudentInfoService extends IService<Student> {
 
     void   addStudent(Student student);
 
@@ -21,4 +21,6 @@ public interface StudentInfoService  {
     Student getStudent(int id);
 //    List<Student>   retrieveStudent(Student student);
     List<Student> retrieveStudent(int studentId, int dormitoryId, String name);
+
+//    void  updateLeftDorm(int id);
 }

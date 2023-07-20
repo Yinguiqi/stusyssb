@@ -291,4 +291,6 @@ public class StudentInfoController {
         request.setAttribute("page", page);
         return "student";
     }
+
+
 }

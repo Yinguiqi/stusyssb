@@ -9,9 +9,11 @@ import com.mht.stueaxm.mapper.StudentInfoMapper;
 import com.mht.stueaxm.mapper.UserInfoMapper;
 import com.mht.stueaxm.service.StudentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -19,9 +21,10 @@ import java.util.List;
  * @date 2023/7/3&20:48
  */
 @Service
-public class StudentInfoServiceImpl  implements StudentInfoService {
+public class StudentInfoServiceImpl extends ServiceImpl<StudentInfoMapper,Student> implements StudentInfoService {
     @Autowired
     private StudentInfoMapper studentDao;
+
     @Override
     public int getTotal() {
         return studentDao.selectCount(null);
@@ -37,6 +40,10 @@ public class StudentInfoServiceImpl  implements StudentInfoService {
 
     @Override
     public void updateStudent(Student student) {studentDao.updateById(student);}
+//    @Override
+//    public void  updateLeftDorm(int id){
+//        studentDao.
+//    };
 
     @Override
     public List<Student> retrieveStudent(int studentId, int dormitoryId, String name) {
@@ -51,9 +58,6 @@ public class StudentInfoServiceImpl  implements StudentInfoService {
     public Student getStudent(int id) {
         return studentDao.selectById(id);
     }
-
     @Override
-    public List<Student> list(int start, int count) {
-        return studentDao.list(start, count);
-    }
+    public List<Student> list(int start, int count) {return studentDao.list(start, count);}
 }
