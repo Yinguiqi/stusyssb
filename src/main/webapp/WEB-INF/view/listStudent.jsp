@@ -255,7 +255,7 @@
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="#">Dashboard</a></li>
+                                <li><a href="/listStudentEntryExit">出入流水</a></li>
                                 <li><a href="#">学生</a></li>
                                 <li class="active">管理员</li>
                             </ol>

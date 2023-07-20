@@ -23,18 +23,6 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="../../css/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        function validateForm() {
-            var studentId = document.getElementById('studentId1').value;
-            var name = document.getElementById('name1').value;
-            var dormitoryId = document.getElementById('dormitoryId1').value;
-
-            if (studentId === '' && name === '' && dormitoryId === '') {
-                alert('请至少输入一个查询条件');
-                return false; // 阻止表单提交
-            }
-
-            return true; // 允许表单提交
-        }
     </script>
 
     <!-- Scripts -->
@@ -210,8 +198,8 @@
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li class="active">进出表</li>
-                                <li><a href="#">>学生</a></li>
+                                <li class="active">出入流水</li>
+                                <li><a href="#">学生</a></li>
                                 <li><a href="#">管理员</a></li>
                             </ol>
                         </div>
@@ -228,88 +216,29 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">学生列表</strong>
+                            <strong class="card-title">出入流水</strong>
                         </div>
                         <div class="card-body" >
-                            <a href="/student"><button>返 回</button></a>
-                            <form method="post" action="/retrieveStudent" role="form" onsubmit="return validateForm()">
-                                <table class="retrieveTable" style="margin-left: auto; margin-right: 0;">
-                                    <tr>
-                                        <td>学号：</td>
-                                        <td><input type="text" name="studentId" id="studentId1" placeholder="请在这里输入学号"></td>
-                                        <td>姓名：</td>
-                                        <td><input type="text" name="name" id="name1" placeholder="请在这里输入名字"></td>
-                                        <td>宿舍号：</td>
-                                        <td><input type="text" name="dormitoryId" id="dormitoryId1" placeholder="请在这里输入宿舍号"></td>
-                                        <td colspan="2" align="center">
-                                            <button type="submit" class="btn btn-success">查 询</button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </form>
                             <!--table-striped是条形表格-->
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th scope="col">学号</th>
                                     <th scope="col">姓名</th>
-                                    <th scope="col">宿舍号</th>
-                                    <th scope="col">年龄</th>
-                                    <th scope="col">性别</th>
-                                    <th scope="col">出生日期</th>
+                                    <th scope="col">时间</th>
+                                    <th scope="col">状态</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${students}" var="s" varStatus="status">
+                                <c:forEach items="${list}" var="l" varStatus="status">
                                     <tr>
-                                        <td>${s.studentId}</td>
-                                        <td>${s.name}</td>
-                                        <td>${s.dormitoryId}</td>
-                                        <td>${s.age}</td>
-                                        <td>${s.sex}</td>
-                                        <td>${s.birthday}</td>
+                                        <td>${l.studentName}</td>
+                                        <td>${l.timestamp}</td>
+                                        <td>${l.getStatus().getDisplay()}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
 
-                            <nav class="pageDIV" style="text-align:center;">
-                                <ul class="pagination" >
-                                    <li <c:if test="${!page.hasPreviouse}">class="disabled"</c:if>>
-                                        <a href="?page.start=0">
-                                            <span>«</span>
-                                        </a>
-                                    </li>
-
-                                    <li <c:if test="${!page.hasPreviouse}">class="disabled"</c:if>>
-                                        <a href="?page.start=${page.start-page.count}">
-                                            <span>‹</span>
-                                        </a>
-                                    </li>
-
-                                    <c:forEach begin="0" end="${page.totalPage-1}" varStatus="status">
-
-                                        <c:if test="${status.count*page.count-page.start<=30 && status.count*page.count-page.start>=-10}">
-                                            <li <c:if test="${status.index*page.count==page.start}">class="disabled"</c:if>>
-                                                <a href="?page.start=${status.index*page.count}"
-                                                   <c:if test="${status.index*page.count==page.start}">class="current"</c:if>
-                                                >${status.count}</a>
-                                            </li>
-                                        </c:if>
-                                    </c:forEach>
-
-                                    <li <c:if test="${!page.hasNext}">class="disabled"</c:if>>
-                                        <a href="?page.start=${page.start+page.count}">
-                                            <span>›</span>
-                                        </a>
-                                    </li>
-                                    <li <c:if test="${!page.hasNext}">class="disabled"</c:if>>
-                                        <a href="?page.start=${page.last}">
-                                            <span>»</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
                         </div>
                     </div>
                 </div>

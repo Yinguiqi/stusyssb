@@ -6,6 +6,8 @@ import com.mht.stueaxm.service.EntryExitInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Kirtico
  * @date 2023/7/19&16:39
@@ -20,4 +22,7 @@ public class EntryExitInfoServiceImpl implements EntryExitInfoService {
     public void addEntryExitInfo(StudentEntryExit studentEntryExit) {
         entryExitInfoMapper.insert(studentEntryExit);
     }
+
+    @Override
+    public List<StudentEntryExit> list(){return entryExitInfoMapper.selectList(null);}
 }

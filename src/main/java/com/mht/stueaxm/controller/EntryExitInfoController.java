@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author Kirtico
@@ -47,5 +48,12 @@ public class EntryExitInfoController {
         studentInfo.updateStudent(student);
         entryExitInfo.addEntryExitInfo(studentEntryExit);
         return "redirect:listStudent";
+    }
+
+    @RequestMapping("/listStudentEntryExit")
+    public String listStudentEntryExit(HttpServletRequest request, HttpServletResponse response) {
+        List<StudentEntryExit> list = entryExitInfo.list();
+        request.setAttribute("list",list);
+        return "leftDorm";
     }
 }
