@@ -1,6 +1,8 @@
 package com.mht.stueaxm.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.parser.Feature;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.mht.stueaxm.domain.StudentEntryExit;
 import com.mht.stueaxm.mapper.EntryExitInfoMapper;
 import com.mht.stueaxm.service.EntryExitInfoService;
@@ -29,18 +31,18 @@ public class EntryExitInfoServiceImpl implements EntryExitInfoService {
         entryExitInfoMapper.insert(studentEntryExit);
     }
 
-    @Override
-    public List<StudentEntryExit> list(){
-        String str = (String) redisTemplate.boundValueOps("EntryExit").get();
-        List<StudentEntryExit> studentEntryExits =  (List<StudentEntryExit>)JSON.parse(str);
-        return studentEntryExits;
-    }
-
     @PostConstruct
     @Override
     public void setRedis(){
         List<StudentEntryExit> studentEntryExits = entryExitInfoMapper.selectList(null);
-        String s = JSON.toJSONString(studentEntryExits);
+        String s = JSON.toJSONString(studentEntryExits, SerializerFeature.WriteClassName);
         redisTemplate.boundValueOps("EntryExit").set(s);
     }
+    @Override
+    public List<StudentEntryExit> list(){
+        String str = (String) redisTemplate.boundValueOps("EntryExit").get();
+        List<StudentEntryExit> studentEntryExits =  (List<StudentEntryExit>)JSON.parse(str, Feature.SupportAutoType);
+        return studentEntryExits;
+    }
+
 }

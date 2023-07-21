@@ -233,8 +233,7 @@
                                     <tr>
                                         <td>${l.studentName}</td>
                                         <td>${l.timestamp}</td>
-<%--                                        .getStatus().getDisplay()--%>
-                                        <td>${l.status}</td>
+                                        <td>${l.getStatus().getDisplay()}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
