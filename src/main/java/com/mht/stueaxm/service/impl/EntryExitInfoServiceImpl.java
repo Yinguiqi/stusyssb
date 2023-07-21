@@ -8,6 +8,7 @@ import com.mht.stueaxm.mapper.EntryExitInfoMapper;
 import com.mht.stueaxm.service.EntryExitInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -35,6 +36,7 @@ public class EntryExitInfoServiceImpl implements EntryExitInfoService {
     @Override
     public void setRedis(){
         List<StudentEntryExit> studentEntryExits = entryExitInfoMapper.selectList(null);
+        System.out.println(1);
         String s = JSON.toJSONString(studentEntryExits, SerializerFeature.WriteClassName);
         redisTemplate.boundValueOps("EntryExit").set(s);
     }
@@ -44,5 +46,9 @@ public class EntryExitInfoServiceImpl implements EntryExitInfoService {
         List<StudentEntryExit> studentEntryExits =  (List<StudentEntryExit>)JSON.parse(str, Feature.SupportAutoType);
         return studentEntryExits;
     }
-
+    // 每隔5秒执行一次 setRedis 方法
+    @Scheduled(fixedRate = 5000)
+    public void refreshRedisData(){
+        setRedis();
+    }
 }

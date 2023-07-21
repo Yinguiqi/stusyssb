@@ -200,7 +200,7 @@
                             <ol class="breadcrumb text-right">
                                 <li class="active">出入流水</li>
                                 <li><a href="#">学生</a></li>
-                                <li><a href="#">管理员</a></li>
+                                <li><a href="/listStudent">管理员</a></li>
                             </ol>
                         </div>
                     </div>

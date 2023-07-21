@@ -15,4 +15,6 @@ public interface EntryExitInfoService {
     List<StudentEntryExit> list();
 
     void setRedis();
+
+    void refreshRedisData();
 }
