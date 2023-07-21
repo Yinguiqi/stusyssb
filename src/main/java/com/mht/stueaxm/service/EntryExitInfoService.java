@@ -13,4 +13,6 @@ public interface EntryExitInfoService {
     void addEntryExitInfo(StudentEntryExit studentEntryExit);
 
     List<StudentEntryExit> list();
+
+    void setRedis();
 }
