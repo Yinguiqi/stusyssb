@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 12/07/2023 21:24:39
+ Date: 12/08/2023 22:46:17
 */
 
 SET NAMES utf8mb4;
@@ -82,30 +82,54 @@ INSERT INTO `role_permission` VALUES (1, 2);
 DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student`  (
   `id` int NOT NULL AUTO_INCREMENT,
-  `studentId` int NOT NULL,
+  `student_id` int NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `age` int NOT NULL,
   `sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `birthday` date NULL DEFAULT NULL,
-  `dormitoryId` int NULL DEFAULT 0,
+  `dormitory_id` int NULL DEFAULT NULL,
+  `left_dorm` int NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `studentId`(`studentId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 48 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  UNIQUE INDEX `student_id`(`student_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES (4, 1001, '安达', 19, '女', '2007-06-01', 101);
-INSERT INTO `student` VALUES (5, 1002, '岛村', 15, '女', '2007-07-02', 101);
-INSERT INTO `student` VALUES (6, 1003, '小侑', 18, '女', '2004-06-04', 102);
-INSERT INTO `student` VALUES (7, 1004, '灯子', 19, '女', '2003-02-17', 102);
-INSERT INTO `student` VALUES (8, 1005, '佐伯', 19, '女', '2003-02-22', 102);
-INSERT INTO `student` VALUES (25, 1102, '向晚', 18, '女', NULL, 104);
-INSERT INTO `student` VALUES (27, 1103, '贝拉', 18, '女', NULL, 0);
-INSERT INTO `student` VALUES (28, 1104, '乃琳', 18, '女', NULL, 0);
-INSERT INTO `student` VALUES (37, 0, '阿光', 19, '女', NULL, 0);
-INSERT INTO `student` VALUES (44, 1100, '小阳', 19, '女', '2022-10-03', 102);
-INSERT INTO `student` VALUES (48, 1101, '嘉然', 19, '女', NULL, 103);
+INSERT INTO `student` VALUES (4, 1001, '安达', 19, '女', '2007-05-30', 101, 1);
+INSERT INTO `student` VALUES (5, 1002, '岛村', 15, '女', '2007-07-02', 101, 1);
+INSERT INTO `student` VALUES (6, 1003, '小侑', 18, '女', '2004-06-04', 102, 1);
+INSERT INTO `student` VALUES (7, 1004, '灯子', 19, '女', '2003-02-16', 102, 2);
+INSERT INTO `student` VALUES (8, 1005, '佐伯', 19, '女', '2003-02-21', 102, 2);
+INSERT INTO `student` VALUES (25, 1102, '向晚', 18, '女', NULL, 104, 1);
+INSERT INTO `student` VALUES (27, 1103, '贝拉', 18, '女', NULL, 0, 1);
+INSERT INTO `student` VALUES (28, 1104, '乃琳', 18, '女', NULL, 0, 1);
+INSERT INTO `student` VALUES (37, 0, '阿光', 8, '女', '2023-07-13', 0, 1);
+INSERT INTO `student` VALUES (44, 1100, '小阳', 19, '女', '2022-10-03', 102, 1);
+INSERT INTO `student` VALUES (48, 1101, '嘉然', 19, '女', NULL, 103, 1);
+
+-- ----------------------------
+-- Table structure for student_entry_exit
+-- ----------------------------
+DROP TABLE IF EXISTS `student_entry_exit`;
+CREATE TABLE `student_entry_exit`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `student_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of student_entry_exit
+-- ----------------------------
+INSERT INTO `student_entry_exit` VALUES (1, '安达', '2023-07-20 15:23:17', 2);
+INSERT INTO `student_entry_exit` VALUES (2, '岛村', '2023-07-20 15:24:35', 2);
+INSERT INTO `student_entry_exit` VALUES (3, '阿光', '2023-07-20 15:28:42', 2);
+INSERT INTO `student_entry_exit` VALUES (4, '安达', '2023-07-20 15:35:32', 2);
+INSERT INTO `student_entry_exit` VALUES (5, '安达', '2023-07-21 14:06:35', 1);
+INSERT INTO `student_entry_exit` VALUES (6, '佐伯', '2023-07-21 14:51:52', 2);
+INSERT INTO `student_entry_exit` VALUES (7, '灯子', '2023-07-21 15:00:59', 2);
 
 -- ----------------------------
 -- Table structure for user
